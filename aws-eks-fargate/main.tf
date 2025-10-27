@@ -4,12 +4,17 @@ locals {
   }
 }
 
+resource "random_string" "name" {
+  length  = 6
+  upper   = false
+  special = false
+}
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "20.2.0"
 
-  cluster_name                   = var.cluster_name
+  cluster_name                   = "${var.cluster_name}-${random_string.name.result}"
   cluster_version                = var.kubernetes_version 
   cluster_endpoint_public_access = true
 

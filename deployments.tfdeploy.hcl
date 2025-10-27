@@ -2,8 +2,6 @@ identity_token "aws" {
   audience = ["terraform-stacks-private-preview"]
 }
 
-
-
 identity_token "k8s" {
   audience = ["k8s.workload.identity"]
 }
@@ -11,15 +9,15 @@ identity_token "k8s" {
 
 deployment "development" {
   inputs = {
-    aws_identity_token = identity_token.aws.jwt
+    aws_identity_token  = identity_token.aws.jwt
     role_arn            = "arn:aws:iam::774305590517:role/tfstacks-role"
     regions             = ["us-west-2"]
-    vpc_name = "vpc-west-2-default"
-    vpc_cidr = "172.31.0.0/16"
+    vpc_name            = "eks-vpc"
+    vpc_cidr            = "10.20.0.0/16"
 
     #EKS Cluster
     kubernetes_version = "1.32"
-    cluster_name = "eksdev02"
+    cluster_name = "eks-dev"
     
     #EKS OIDC
     tfc_kubernetes_audience = "k8s.workload.identity"
@@ -33,7 +31,6 @@ deployment "development" {
     namespace = "hashibank"
 
   }
-  destroy = true
 }
 
 # deployment "prod" {
