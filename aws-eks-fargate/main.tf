@@ -1,7 +1,8 @@
 locals {
   tags = {
-    Blueprint  = var.cluster_name
+    Blueprint  = "${var.cluster_name}-${random_string.name.result}-blueprint"
   }
+  clustername = "${var.cluster_name}-${random_string.name.result}"
 }
 
 resource "random_string" "name" {
@@ -94,19 +95,19 @@ module "eks" {
 
 data "aws_eks_cluster" "upstream" {
   depends_on = [module.eks]
-  name = var.cluster_name
+  name = local.clustername
 
 }
 
 data "aws_eks_cluster_auth" "upstream_auth" {
   depends_on = [module.eks]
-  name = var.cluster_name
+  name = local.clustername
 }
 
 
 resource "aws_eks_identity_provider_config" "oidc_config" {
   depends_on = [module.eks]
-  cluster_name = var.cluster_name
+  cluster_name = "${var.cluster_name}-${random_string.name.result}"
 
   oidc {
     identity_provider_config_name = "tfstack-terraform-cloud"
