@@ -2,7 +2,7 @@
 data "aws_availability_zones" "available" {}
 
 locals {
-  azs = slice(data.aws_availability_zones.available.names, 0, 3)
+  azs = slice(data.aws_availability_zones.available.names, 0, 6)
 
   tags = {
     Blueprint  = "${var.vpc_name}-${random_string.name.result}"
