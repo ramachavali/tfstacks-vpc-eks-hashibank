@@ -11,6 +11,7 @@ component "vpc" {
 
   providers = {
     aws     = provider.aws.configurations[each.value]
+    random  = provider.random.this
   }
 } 
 
@@ -37,6 +38,7 @@ component "eks" {
     kubernetes  = provider.kubernetes.this
     time = provider.time.this
     tls = provider.tls.this
+    random  = provider.random.this
   }
 }
 
