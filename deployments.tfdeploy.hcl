@@ -18,7 +18,7 @@ deployment "development" {
     vpc_cidr = "172.31.0.0/16"
 
     #EKS Cluster
-    kubernetes_version = "1.30"
+    kubernetes_version = "1.32"
     cluster_name = "eksdev02"
     
     #EKS OIDC
