@@ -11,7 +11,7 @@ deployment "development" {
   inputs = {
     aws_identity_token  = identity_token.aws.jwt
     role_arn            = "arn:aws:iam::774305590517:role/tfstacks-role"
-    regions             = ["us-west-2", "us-west-1"]
+    regions             = ["us-west-2"]
     vpc_name            = "eks-vpc"
     vpc_cidr            = "10.20.0.0/16"
 
