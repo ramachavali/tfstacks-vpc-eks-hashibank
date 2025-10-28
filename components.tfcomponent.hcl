@@ -116,7 +116,7 @@ component "deploy-hashibank" {
   }
 }
 
-output "abl" {
+output "alb" {
     type = string
     value =  component.deploy-hashibank.alb
 }
