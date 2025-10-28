@@ -118,5 +118,5 @@ component "deploy-hashibank" {
 
 output "abl" {
     type = string
-    value =  component.hashibank.kubernetes_ingress_v1.hashibank.status[0].load_balancer[0].ingress[0].hostname
+    value =  component.deploy-hashibank.kubernetes_ingress_v1.hashibank.status[0].load_balancer[0].ingress[0].hostname
 }
