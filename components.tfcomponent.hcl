@@ -117,6 +117,6 @@ component "deploy-hashibank" {
 }
 
 output "alb" {
-    type = string
-    value =  component.deploy-hashibank.alb
+    type = list(string)
+    value =  [for x in deploy-hashibank.lambda : x.alb]
 }
