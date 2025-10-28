@@ -31,7 +31,7 @@ deployment "development" {
     namespace = "hashibank"
 
   }
-  destroy = true
+  # destroy = true
 }
 
 # deployment "prod" {
